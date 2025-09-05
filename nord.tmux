@@ -310,7 +310,7 @@ main() {
    local status_connect_separator=$(get_tmux_option "@nord_status_connect_separator" "no")
    local status_fill=$(get_tmux_option "@nord_status_fill" "icon")
 
-    # local status_modules_right=$(get_tmux_option "@nord_status_modules_right" "battery date_time host")
+       local status_modules_right=$(get_tmux_option "@nord_status_modules_right" "date_time host")
    local loaded_modules_right=$( load_modules "$status_modules_right")
 
    local status_modules_left=$(get_tmux_option "@nord_status_modules_left" "session")

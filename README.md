@@ -10,7 +10,7 @@
     3. [Window current](#window-current)
     4. [Status](#status)
     5. [Customizing modules](#customizing-modules)
-    6. [Battery module](#battery-module)
+
 4. [Create a custom module](#create-a-custom-module)
 5. [Configuration Examples](#configuration-examples)
     1. [Config 1](#config-1)
@@ -229,7 +229,7 @@ Available modules:
 - user - display the username
 - host - display the hostname
 - date_time - display the date and time
-- [battery](#battery-module) - display the battery
+
 
 ### Customizing modules
 
@@ -260,26 +260,7 @@ Ex:
 set -g @nord_date_time_icon "null"
 ```
 
-### Battery module
 
-#### Requirements
-This module depends on [tmux-battery](https://github.com/tmux-plugins/tmux-battery/tree/master).
-
-#### Install
-The prefered way to install tmux-battery is using [TPM](https://github.com/tmux-plugins/tpm).
-
-#### Configure
-Load tmux-battery after you load nord-tmux.
-```sh
-set -g @plugin 'nord-tmux'
-...
-set -g @plugin 'tmux-plugins/tmux-battery'
-```
-
-Add the battery module to the status modules list.
-```sh
-set -g @nord_status_modules_right "... battery ..."
-```
 
 ## Create a custom module
 
