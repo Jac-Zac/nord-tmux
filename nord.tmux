@@ -66,6 +66,7 @@ build_window_format() {
   local background=$3
   local text=$4
   local fill=$5
+  local number_color=$6
 
   if [ "$window_status_enable" = "yes" ]
   then
@@ -76,7 +77,7 @@ build_window_format() {
   if [ "$fill" = "none" ]
   then
     local show_left_separator="#[fg=$thm_gray,bg=$thm_bg,nobold,nounderscore,noitalics]$window_left_separator"
-    local show_number="#[fg=$thm_fg,bg=$thm_black4]$number"
+    local show_number="#[fg=${number_color:-$thm_fg},bg=$thm_black4]$number"
     local show_middle_separator="#[fg=$thm_gray,bg=$thm_black4,nobold,nounderscore,noitalics]$window_middle_separator"
     local show_text="#[fg=$thm_fg,bg=$thm_black4]$text"
     local show_right_separator="#[fg=$thm_gray,bg=$thm_bg]$window_right_separator"
@@ -86,7 +87,7 @@ build_window_format() {
   if [ "$fill" = "all" ]
   then
     local show_left_separator="#[fg=$color,bg=$thm_bg,nobold,nounderscore,noitalics]$window_left_separator"
-    local show_number="#[fg=$background,bg=$color]$number"
+    local show_number="#[fg=${number_color:-$background},bg=$color]$number"
     local show_middle_separator="#[fg=$background,bg=$color,nobold,nounderscore,noitalics]$window_middle_separator"
     local show_text="#[fg=$background,bg=$color]$text"
     local show_right_separator="#[fg=$color,bg=$thm_bg]$window_right_separator"
@@ -95,7 +96,7 @@ build_window_format() {
 
   if [ "$fill" = "number" ]
   then
-    local show_number="#[fg=$background,bg=$color]$number"
+    local show_number="#[fg=${number_color:-$background},bg=$color]$number"
     local show_middle_separator="#[fg=$color,bg=$background,nobold,nounderscore,noitalics]$window_middle_separator"
      local show_text="#[fg=$thm_fg,bg=$background]$text"
 
@@ -309,7 +310,7 @@ main() {
    local status_connect_separator=$(get_tmux_option "@nord_status_connect_separator" "no")
    local status_fill=$(get_tmux_option "@nord_status_fill" "icon")
 
-     local status_modules_right=$(get_tmux_option "@nord_status_modules_right" "directory date_time host")
+      local status_modules_right=$(get_tmux_option "@nord_status_modules_right" "battery date_time host")
    local loaded_modules_right=$( load_modules "$status_modules_right")
 
    local status_modules_left=$(get_tmux_option "@nord_status_modules_left" "session")
