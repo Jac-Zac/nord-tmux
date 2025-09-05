@@ -3,7 +3,7 @@
 
 # --> Nord theme
 thm_bg="#2E3440"       # Nord Polar Night (dark background)
-thm_fg="#D8DEE9"       # Nord Snow Storm (foreground)
+thm_fg="#FFFFFF"       # Nord Snow Storm (foreground)
 thm_cyan="#8fbcbb"     # Nord Frost (cyan)
 thm_black="#2e3440"    # Nord Polar Night (darker shade)
 thm_gray="#3B4252"     # Nord Polar Night (gray)
