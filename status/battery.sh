@@ -3,9 +3,14 @@
     local color=$(get_tmux_option "@nord_battery_color" "$thm_yellow")
     local text=$(get_tmux_option "@nord_battery_text" "#{battery_percentage}")
 
-    # Get battery percentage and status
-    local percentage=$(tmux display-message -p "#{battery_percentage}" 2>/dev/null || echo "100")
-    local status=$(tmux display-message -p "#{battery_status}" 2>/dev/null || echo "unknown")
+  # Get battery percentage and status using tmux-battery plugin
+  local percentage=$($HOME/.config/tmux/plugins/tmux-battery/scripts/battery_percentage.sh 2>/dev/null | tr -d '%')
+  local status
+  if command -v pmset >/dev/null 2>&1; then
+    status=$(pmset -g batt | awk -F '; *' 'NR==2 { print $2 }')
+  else
+    status="unknown"
+  fi
 
     # Determine icon based on status and percentage
     local icon
